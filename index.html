@@ -10,20 +10,102 @@
 
 </head>
 <body>
-    <h1>Word Guess Game</h1>
-
+    <!-- Row 1 -->
     <div class="row">
-        <div class="col-sm-12 col-lg-7 bg-primary">Play Section</div>
-        <div class="col-sm-12 col-lg-5 bg-success">Game info Section</div>   
+        <!-------------------->
+        <!-- Main Play Area -->
+        <!-------------------->
+        <div class="col-sm-12 col-lg-7 col-xl-6 bg-secondary">
+
+            <!-- Title Block/Img -->
+            <img class="center border border-dark m-auto" src="https://picsum.photos/600/150">
+            
+            <!-- Word Guess Area -->
+            <div class="text-center my-2 p-4">
+                <h1>PRESS ANY KEY TO START!</h1>
+            </div>
+        </div>
+        <!-------------------->
+
+
+        <!--------------------->
+        <!-- Game Data Panel -->
+        <!--------------------->
+        <div class="col-sm-12 col-lg-5 col-xl-6 bg-dark py-2 pr-4">
+
+            <!-- Info/Hint Panel -->
+            <div class="text-center border border-dark bg-secondary m-2 p-3">
+                [Game Instructions appear here!]
+            </div>
+
+            <!-- Wins/Loses Counter -->
+            <div class="text-center border border-dark bg-dark m-1 p-1 clearfix">
+                <div class="w-50 border border-dark bg-info px-3 py-1 float-left">
+                    WINS: <span id="wins">___</span>
+                </div> 
+                <div class="w-50 border border-dark bg-white px-3 py-1 float-right">
+                    LOSSES: <span id="losses">___</span>
+                </div>
+            </div>
+
+            <!-- Guess Counter -->
+            <div class="text-center d-block border border-dark bg-secondary m-2 p-2">
+                Number of Guesses Remaining:
+                <div id="numOfGuess" class="text-center">
+                    ___
+                </div>
+            </div>
+
+            <!-- Incorrect Guess Panel -->
+            <div class="text-center d-block border border-dark bg-secondary m-2 p-2">
+                    Letters Already Guessed:
+                    <div id="lettersGuessed" class="font-weight-bold text-center">
+                        D S L J K I
+                    </div>
+                </div>
+
+        </div>
+        <!--------------------->
     </div>
 
+    <!-- Row 2 -->
     <div class="row">
-        <div class="col-12 bg-secondary">secondary info section</div>
+        <!-------------------------->
+        <!-- Secondary Info Panel -->
+        <!-------------------------->
+        
+        <!-- Animal Pictures -->
+        <div class="col-sm-12 col-lg-3 col-xl-2 border border-dark bg-dark">
+            <img id="aniPic1" class="d-inline-block border border-dark pl-2 pb-3 pl-sm-2 pb-sm-3 pt-lg-3 px-lg-3" src="https://picsum.photos/150">
+            <img id="aniPic2" class="d-inline-block border border-dark pl-2 pb-3 pl-sm-2 pb-sm-3 pt-lg-3 pb-lg-3 px-lg-3" src="https://picsum.photos/151"> 
+        </div>
+
+        <div class="col-sm-12 col-lg-9 col-xl-10 border border-dark bg-secondary p-3">
+            <!-- Animal Name and Information -->
+            <h2 id="animalName">Name of Animal Goes Here</h2>
+
+            <!-- Unordered List of Animal Facts -->
+            <div class="w-75 d-inline-block border border-dark p-3">
+                <ul>
+                    <li id="aniInfo1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</li>
+                    <li id="aniInfo2">Sagittis id consectetur purus ut faucibus.</li>
+                    <li id="aniInfo3">Convallis a cras semper auctor neque vitae tempus quam.</li>
+                    <li id="aniInfo4">Tristique risus nec feugiat in fermentum.</li>
+                    <li id="aniInfo5">Ut pharetra sit amet aliquam id diam.</li>
+                </ul>
+            </div>
+        </div>
+        <!-------------------------->
     </div>
 
+
+
+    <!-- Script Tags -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- JavaScript Link to game.js -->
     <script src="assets/javascript/game.js"></script>
 </body>
 </html>
