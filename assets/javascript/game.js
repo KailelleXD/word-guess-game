@@ -1,3 +1,8 @@
+// Variables and Arrays
+
+var zooAnimalsIndex = getRandomInt(zooAnimals.length)
+var currentWord = zooAnimals[zooAnimalsIndex];
+var wordSplit = currentWord.split("");
 
 zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Penguin",
               "Tiger","Hippopotamus","Red Panda","Koala","Polar Bear","Lemurs","Rhinoceros",
@@ -7,14 +12,12 @@ zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Pengui
 
               console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
 
+// Functions
+
 // Function Declaration to get a random number depending on inputs.
 function getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 } // var randomNumber = getRandomInt(2);
-
-var zooAnimalsIndex = getRandomInt(zooAnimals.length)
-var currentWord = zooAnimals[zooAnimalsIndex];
-var wordSplit = currentWord.split("");
 
 // Console.log checks!
 console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
