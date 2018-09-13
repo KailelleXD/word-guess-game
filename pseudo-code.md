@@ -51,6 +51,35 @@ then player wins the game
 game increments the winCounter variable and displays the change.
 The game immediately loops and chooses a new random word from the random array.
 
+------------------------------------------------------
+
+What I need to do to finish!
+
+1. Store and display incorrect guesses.
+2. Display Number of guesses remaining and set it up to decrement on wrong letters.
+3. Create Win state.
+4. Create lose state.
+5. secondary info panel effects.
+6. reset and load next work.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------
 
 Zoo Animals:
 Monkey
