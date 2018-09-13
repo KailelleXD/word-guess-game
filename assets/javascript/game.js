@@ -88,35 +88,66 @@ function wordGuessClear() {
     targetWordGuessArea.textContent = "";
 }
 
-function winLoseCheck() {
-    censoredWordCheckStatus.length = 0;
-    for (var k = 0; k < censoredWord.length; k++) {
-        censoredWordCheckStatus[k] = censoredWord[k];
+// function winLoseCheck() {
+//     censoredWordCheckStatus.length = 0;
+//     for (var k = 0; k < censoredWord.length; k++) {
+//         censoredWordCheckStatus[k] = censoredWord[k];
 
-        if (censoredWordCheckStatus[k] == "-") {
-            censoredWordCheckStatus.push(" ");
-        } else {
-            censoredWordCheckStatus.push(censoredWord[k]);
-        }
+//         if (censoredWordCheckStatus[k] == "-") {
+//             censoredWordCheckStatus.push(" ");
+//         } else {
+//             censoredWordCheckStatus.push(censoredWord[k]);
+//         }
         
-        var str1 = censoredWordCheckStatus.join('');
-        var str2 = arrUp.join('');
-        console.log("str1: " + str1, "str2: " + str2);
-        if (str1 == str2) {
-            winLoseStatus = true;
-            winCounter++;
-            targetWins.textContent = winCounter;
-            console.log("You won!");
-            gameReset();
-        } else if (numOfGuess == 0) {
-            winLoseStatus = true;
-            lossCounter++;
-            targetLosses.textContent = lossCounter;
-            console.log("You loss!");
-            gameReset();
-        }
-    }
+//         var str1 = censoredWordCheckStatus.join('');
+//         var str2 = arrUp.join('');
+//         console.log("str1: " + str1, "str2: " + str2);
+//         if (str1 == str2) {
+//             winLoseStatus = true;
+//             winCounter++;
+//             targetWins.textContent = winCounter;
+//             console.log("You won!");
+//             gameReset();
+//         } else if (numOfGuess == 0) {
+//             winLoseStatus = true;
+//             lossCounter++;
+//             targetLosses.textContent = lossCounter;
+//             console.log("You loss!");
+//             gameReset();
+//         }
+//     }
+// }
+
+function winLoseCheck() {
+    /* 
+
+    1.  In order to get this function to work as intended I need to: 
+        
+        create a for-loop that clones the censoredWord Array into a new Array called, "censoredWordCheckStatus". (make this it's own fuction)
+    
+    2.  using the newly created array, I then need to:
+
+        create a for-loop to cycle through the copied array to remove any hyphens. (should be very similar to how I put the hyphens into the array)
+
+    3.  After the hyphens have been removed, you should be able to use the code you had written above to:
+
+        convert both arrays (censoredWordCheckStatus && arrUp) into strings using .join(' '); method.
+
+    4.  After the arrays have been converted into strings we can:
+
+        create an if/else statement: IF str1 == str2, THEN winLoseStatus = true, ELSE IF numOfGuess == 0, THEN winLoseStatus = true.
+
+    5.  After the actual checkstatus part of the function has been created we can:
+
+        Set up the increment, and change the targetIDs for both Wins and Losses.
+
+    6.  After that is finished:
+
+        Check gameReset Function for completion and if not completed write psuedo-code and then complete and implement into this function for both statuses.
+
+    */
 }
+
 
 function gameReset() {
     if (winLoseStatus = true) {
@@ -156,8 +187,10 @@ var numOfGuess = 10;
 var zooAnimalsIndex = getRandomInt(zooAnimals.length) // Initializes a random number between 0 and the max length of the zooAnimals array.
 var currentWord = zooAnimals[zooAnimalsIndex]; // Locates the currentWord within the zooAnimals array and initializes it in currentWord.
 var wordSplit = currentWord.split(""); // Method that splits the string found in currentWord into an array of individual characters.
+
 var censoredWord = []; // Array to store the converted censored word.
 var censoredWordCheckStatus = [];
+
 var wrongLetters = []; // Array to store all wrong letter chosen by user.
 var wrongLettersUp = [];
 var userChoiceUp = [];
@@ -189,7 +222,7 @@ arrUpper(wordSplit, arrUp);
 // console.log("Variable currentWord contains: " + currentWord);
 console.log(wordSplit);
 // console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
-// console.log(censoredWord); // Should be blank since Main Game Code has yet to run.
+console.log(censoredWord); // Should be blank since Main Game Code has yet to run.
 // console.log(arrLow);
 // console.log(arrUp);
 // console.log(alphaAllCase);
@@ -223,6 +256,7 @@ document.onkeyup = function (event) {
             letterCheck(userChoice, userChoiceUp, arrLow, wrongLettersUp, wrongLetters);
 
             winLoseCheck();
+            console.log(censoredWord);
            
         }
     }
