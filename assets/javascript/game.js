@@ -112,7 +112,7 @@ function winLoseCheck() {
         
     var str1 = censoredWordCheckStatus.join('');
     var str2 = arrUp.join('');
-    console.log("str1: " + str1, "str2: " + str2);
+    // console.log("str1: " + str1, "str2: " + str2);
 
     if (str1 == str2) {
         console.log("The strings match!(WIN)");
@@ -140,6 +140,10 @@ function gameReset() {
     lettersGuessedClear();
     numOfGuess = 10;
 
+    var roundTotal = winCounter + lossCounter;
+
+    targetInfoPanel.textContent = "Round: " + roundTotal + "! Here's your next word!";
+
     var zooAnimalsIndex = getRandomInt(zooAnimals.length) // Initializes a random number between 0 and the max length of the zooAnimals array.
     var currentWord = zooAnimals[zooAnimalsIndex]; // Locates the currentWord within the zooAnimals array and initializes it in currentWord.
     var wordSplit = currentWord.split(""); // Method that splits the string found in currentWord into an array of individual characters.
@@ -149,28 +153,15 @@ function gameReset() {
 
     arrLower(wordSplit, arrLow);
     arrUpper(wordSplit, arrUp);
-    console.log("inside gameReset function: arrLow = " + arrLow);
-    console.log("inside gameReset function: arrUp = " + arrUp);
 
-//-----------------------
-
-    // var censoredWord = []; // Array to store the converted censored word.
-    // var censoredWordCheckStatus = [];
-
-    // var wrongLetters = []; // Array to store all wrong letter chosen by user.
-    // var wrongLettersUp = [];
-    // var userChoiceUp = [];
-    // var arrLow = []; // Array to store the currentWord in lowercase form.
-    // var arrUp = []; // Array to store the currentWord in uppercase form.
-    // var userChoiceCorrect = [];
-
-
-    console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
-    console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
-    console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
-    console.log("Variable currentWord contains: " + currentWord);
-    console.log(wordSplit);
-    console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
+    // console.log("inside gameReset function: arrLow = " + arrLow);
+    // console.log("inside gameReset function: arrUp = " + arrUp);
+    // console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
+    // console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
+    // console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
+    // console.log("Variable currentWord contains: " + currentWord);
+    // console.log(wordSplit);
+    // console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
     
     winLoseStatus = false;
     gameStatus = true;
