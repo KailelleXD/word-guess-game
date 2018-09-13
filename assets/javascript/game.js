@@ -28,6 +28,8 @@ function wordGuessRefresh() {
     // For loop to replace text inside wordGuessArea with underscroll bars.
     wordGuessClear();
 
+    console.log("Inside the function wordGuessRefresh: " + currentWord);
+
     for (var i = 0; i < currentWord.length; i++) {
         if (currentWord[i] == " ") {
             censoredWord.push(" - ");
@@ -37,6 +39,7 @@ function wordGuessRefresh() {
     }
 
     targetWordGuessArea.textContent = censoredWord.join(' ');
+
 }
 
 // Function Declaration to check if key input matches 
@@ -86,102 +89,120 @@ function letterCheck(char, charUp, lower, upper, wLetters) {
 // Function Declaration to clear wordGuessArea
 function wordGuessClear() {
     targetWordGuessArea.textContent = "";
+    censoredWord = [];
 }
 
-// function winLoseCheck() {
-//     censoredWordCheckStatus.length = 0;
-//     for (var k = 0; k < censoredWord.length; k++) {
-//         censoredWordCheckStatus[k] = censoredWord[k];
+function infoPanelClear() {
+    targetInfoPanel.textContent = "";
+}
 
-//         if (censoredWordCheckStatus[k] == "-") {
-//             censoredWordCheckStatus.push(" ");
-//         } else {
-//             censoredWordCheckStatus.push(censoredWord[k]);
-//         }
-        
-//         var str1 = censoredWordCheckStatus.join('');
-//         var str2 = arrUp.join('');
-//         console.log("str1: " + str1, "str2: " + str2);
-//         if (str1 == str2) {
-//             winLoseStatus = true;
-//             winCounter++;
-//             targetWins.textContent = winCounter;
-//             console.log("You won!");
-//             gameReset();
-//         } else if (numOfGuess == 0) {
-//             winLoseStatus = true;
-//             lossCounter++;
-//             targetLosses.textContent = lossCounter;
-//             console.log("You loss!");
-//             gameReset();
-//         }
-//     }
-// }
+function lettersGuessedClear() {
+    targetLettersGuessed.textContent = "__________";
+    wrongLetters = [];
+}
 
 function winLoseCheck() {
-
-// 1.  In order to get this function to work as intended I need to: 
-        
-//     clone the censoredWord Array into a new Array called, "censoredWordCheckStatus". (using .slice)
-
-        censoredWordCheckStatus = censoredWord.slice(0);
-
-        // var a = [ 'apple', 'orange', 'grape' ];
-        // b = a.slice(0);
-        // b[0] = 'cola';
-        // document.writeln("a=" + a + "<br>");
-        // document.writeln("b=" + b);
-    
-// 2.  using the newly created array, I then need to:
-
-//     create a for-loop to cycle through the copied array to remove any hyphens. (should be very similar to how I put the hyphens into the array)
-
-        for (var k = 0; k < censoredWordCheckStatus.length; k++) {
-            if (censoredWordCheckStatus[k] == " - ") {
-                censoredWordCheckStatus[k] = " ";
-            }
+    console.log("inside the function winLoseCheck: censoredWord = " + censoredWord);
+    censoredWordCheckStatus = censoredWord.slice(0);
+    for (var k = 0; k < censoredWordCheckStatus.length; k++) {
+        if (censoredWordCheckStatus[k] == " - ") {
+            censoredWordCheckStatus[k] = " ";
         }
-
-        // console.log(censoredWordCheckStatus);
-
-// 3.  After the hyphens have been removed, you should be able to use the code you had written above to:
-
-//     convert both arrays (censoredWordCheckStatus && arrUp) into strings using .join(' '); method.
-
-            var str1 = censoredWordCheckStatus.join('');
-            var str2 = arrUp.join('');
-            console.log("str1: " + str1, "str2: " + str2);
-
-            if (str1 == str2) {
-                console.log("The strings match!")
-            } else {
-                console.log("The strings DON'T match!")
-            }
-
-// 4.  After the arrays have been converted into strings we can:
-
-//     create an if/else statement: IF str1 == str2, THEN winLoseStatus = true, ELSE IF numOfGuess == 0, THEN winLoseStatus = true.
-
-// 5.  After the actual checkstatus part of the function has been created we can:
-
-//     Set up the increment, and change the targetIDs for both Wins and Losses.
-
-// 6.  After that is finished:
-
-//     Check gameReset Function for completion and if not completed write psuedo-code and then complete and implement into this function for both statuses.
-
-}
-
-
-function gameReset() {
-    if (winLoseStatus = true) {
-        zooAnimalsIndex = getRandomInt(zooAnimals.length)
-        numOfGuess = 10;
-        targetNumOfGuess.textContent = numOfGuess;
-        wordGuessRefresh();
+    }
         
+    var str1 = censoredWordCheckStatus.join('');
+    var str2 = arrUp.join('');
+    console.log("str1: " + str1, "str2: " + str2);
+
+    if (str1 == str2) {
+        console.log("The strings match!(WIN)");
+        targetInfoPanel.textContent = "You Won! (Press Any Key to Continue)";
+        winCounter++;
+        targetWins.textContent = winCounter;
+        winLoseStatus = true;
+        gameStatus = false; 
+    } else if (str1 != str2 && numOfGuess == 0) {
+        console.log("The strings DON'T match!(LOSS)");
+        targetInfoPanel.textContent = "You Lost! (Press Any Key to Continue)";
+        lossCounter++;
+        targetLosses.textContent = lossCounter;
+        winLoseStatus = true;
+        gameStatus = false;
     }
 }
+
+function gameReset() {
+    console.log("The game is being reset!")
+    // What do I need to do in this function?
+
+    wordGuessClear();
+    infoPanelClear();
+    lettersGuessedClear();
+    numOfGuess = 10;
+
+    var zooAnimalsIndex = getRandomInt(zooAnimals.length) // Initializes a random number between 0 and the max length of the zooAnimals array.
+    var currentWord = zooAnimals[zooAnimalsIndex]; // Locates the currentWord within the zooAnimals array and initializes it in currentWord.
+    var wordSplit = currentWord.split(""); // Method that splits the string found in currentWord into an array of individual characters.
+
+    arrLow = [];
+    arrUp = [];
+
+    arrLower(wordSplit, arrLow);
+    arrUpper(wordSplit, arrUp);
+    console.log("inside gameReset function: arrLow = " + arrLow);
+    console.log("inside gameReset function: arrUp = " + arrUp);
+
+//-----------------------
+
+    // var censoredWord = []; // Array to store the converted censored word.
+    // var censoredWordCheckStatus = [];
+
+    // var wrongLetters = []; // Array to store all wrong letter chosen by user.
+    // var wrongLettersUp = [];
+    // var userChoiceUp = [];
+    // var arrLow = []; // Array to store the currentWord in lowercase form.
+    // var arrUp = []; // Array to store the currentWord in uppercase form.
+    // var userChoiceCorrect = [];
+
+
+    console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
+    console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
+    console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
+    console.log("Variable currentWord contains: " + currentWord);
+    console.log(wordSplit);
+    console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
+    
+    winLoseStatus = false;
+    gameStatus = true;
+
+    targetWordGuessArea.textContent = censoredWord;
+
+    wordGuessClear();
+
+    console.log(currentWord);
+
+    for (var i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] == " ") {
+            censoredWord.push(" - ");
+        } else {
+            censoredWord.push(" _ ");
+        }
+    }
+
+    targetWordGuessArea.textContent = censoredWord.join(' ');
+
+    console.log(gameStatus);
+    console.log(winLoseStatus);
+
+    console.log("Inside the function gameReset: censoredWord = " + censoredWord);
+
+    return censoredWord;
+
+
+     
+        
+}
+
 //-----------------
 
 
@@ -189,7 +210,7 @@ function gameReset() {
 //---------------------------------
 
 zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Penguin",
-              "Tiger","Hippopotamus","Red Panda","Koala","Polar Bear","Lemurs","Rhinoceros",
+              "Tiger","Hippopotamus","Red Panda","Koala","Polar Bear","Lemur","Rhinoceros",
               "Zebra","Cheetah","Flamingo","Meerkat","Orangutan","Capybara","Tamarin",
               "Snow Leopard","Sea Lion","Jaguar","Gibbon","River Otter",
               "Chimpanzee","Komodo Dragon","Anteater"];
@@ -229,16 +250,6 @@ var targetLosses = document.getElementById("losses");
 var targetNumOfGuess = document.getElementById("numOfGuess");
 var targetLettersGuessed = document.getElementById("lettersGuessed");
 
-
-
-
-// Call-back functions to create arrays with characters in both lower and uppercase.
-arrLower(wordSplit, arrLow);
-arrUpper(wordSplit, arrUp);
-
-//-----------------------
-
-
 // Console.log checks!
 // console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
 // console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
@@ -250,6 +261,12 @@ console.log(censoredWord); // Should be blank since Main Game Code has yet to ru
 // console.log(arrLow);
 // console.log(arrUp);
 // console.log(alphaAllCase);
+
+// Call-back functions to run at initialization.
+arrLower(wordSplit, arrLow);
+arrUpper(wordSplit, arrUp);
+
+//-----------------------
 
 
 // Start of Main Game Code!!!
@@ -278,11 +295,10 @@ document.onkeyup = function (event) {
         } else {
             userChoiceCheck(userChoice, arrLow, arrUp, censoredWord);
             letterCheck(userChoice, userChoiceUp, arrLow, wrongLettersUp, wrongLetters);
-
             winLoseCheck();
-            // console.log(censoredWord);
-           
         }
+    } else if (gameStatus == false && winLoseStatus == true) {
+        gameReset();
     }
 }
 
