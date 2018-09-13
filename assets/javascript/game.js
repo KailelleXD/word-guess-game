@@ -88,6 +88,23 @@ function wordGuessClear() {
     targetWordGuessArea.textContent = "";
 }
 
+function winLoseCheck() {
+    var str1 = censoredWord.join('');
+    var str2 = arrUp.join('');
+    // console.log("str1: " + str1, "str2: " + str2);
+    if (str1 == str2) {
+        winLoseStatus = true;
+        winCounter++;
+        targetWins.textContent = winCounter;
+        console.log("You won!");
+    } else if (numOfGuess == 0) {
+        winLoseStatus = true;
+        lossCounter++;
+        targetLosses.textContent = lossCounter;
+        console.log("You loss!");
+    }
+}
+
 //-----------------
 
 
@@ -110,6 +127,7 @@ alphaAllCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 //-----------------------
 
 var gameStatus = false; // Bool Varible to determine primary game state.
+var winLoseStatus = false;
 var winCounter = 0; // Counter for <span id="wins">
 var lossCounter = 0; // Counter for <span id="losses">
 var numOfGuess = 10;
@@ -165,6 +183,8 @@ document.onkeyup = function (event) {
         gameStatus = true;
         targetNumOfGuess.textContent = numOfGuess;
 
+        
+
         // Clears initial text content, "PRESS ANY KEY TO START!"
         wordGuessClear();
 
@@ -178,6 +198,8 @@ document.onkeyup = function (event) {
         } else {
             userChoiceCheck(userChoice, arrLow, arrUp, censoredWord);
             letterCheck(userChoice, userChoiceUp, arrLow, wrongLettersUp, wrongLetters);
+
+            winLoseCheck();
            
         }
     }
