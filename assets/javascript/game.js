@@ -123,7 +123,7 @@ function winLoseCheck() {
         gameStatus = false; 
     } else if (str1 != str2 && numOfGuess == 0) {
         console.log("The strings DON'T match!(LOSS)");
-        targetInfoPanel.textContent = "You Lost! (Press Any Key to Continue)";
+        targetInfoPanel.textContent = "You Lost! The animal was a " + str2 + " (Press Any Key to Continue)";
         lossCounter++;
         targetLosses.textContent = lossCounter;
         winLoseStatus = true;
@@ -194,6 +194,10 @@ function gameReset() {
         
 }
 
+function secondaryInfo() {
+    // When the 
+}
+
 //-----------------
 
 
@@ -240,6 +244,16 @@ var targetWins = document.getElementById("wins");
 var targetLosses = document.getElementById("losses");
 var targetNumOfGuess = document.getElementById("numOfGuess");
 var targetLettersGuessed = document.getElementById("lettersGuessed");
+
+// Secondary Info Panel targets!
+var targetAniPic1 = document.getElementById("aniPic1");
+var targetAniPic2 = document.getElementById("aniPic2");
+var targetAnimalName = document.getElementById("animalName");
+var targetAniInfo1 = document.getElementById("aniInfo1");
+var targetAniInfo2 = document.getElementById("aniInfo2");
+var targetAniInfo3 = document.getElementById("aniInfo3");
+var targetAniInfo4 = document.getElementById("aniInfo4");
+var targetAniInfo5 = document.getElementById("aniInfo5");
 
 // Console.log checks!
 // console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
