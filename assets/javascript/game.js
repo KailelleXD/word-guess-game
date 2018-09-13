@@ -119,33 +119,57 @@ function wordGuessClear() {
 // }
 
 function winLoseCheck() {
-    /* 
 
-    1.  In order to get this function to work as intended I need to: 
+// 1.  In order to get this function to work as intended I need to: 
         
-        create a for-loop that clones the censoredWord Array into a new Array called, "censoredWordCheckStatus". (make this it's own fuction)
+//     clone the censoredWord Array into a new Array called, "censoredWordCheckStatus". (using .slice)
+
+        censoredWordCheckStatus = censoredWord.slice(0);
+
+        // var a = [ 'apple', 'orange', 'grape' ];
+        // b = a.slice(0);
+        // b[0] = 'cola';
+        // document.writeln("a=" + a + "<br>");
+        // document.writeln("b=" + b);
     
-    2.  using the newly created array, I then need to:
+// 2.  using the newly created array, I then need to:
 
-        create a for-loop to cycle through the copied array to remove any hyphens. (should be very similar to how I put the hyphens into the array)
+//     create a for-loop to cycle through the copied array to remove any hyphens. (should be very similar to how I put the hyphens into the array)
 
-    3.  After the hyphens have been removed, you should be able to use the code you had written above to:
+        for (var k = 0; k < censoredWordCheckStatus.length; k++) {
+            if (censoredWordCheckStatus[k] == " - ") {
+                censoredWordCheckStatus[k] = " ";
+            }
+        }
 
-        convert both arrays (censoredWordCheckStatus && arrUp) into strings using .join(' '); method.
+        // console.log(censoredWordCheckStatus);
 
-    4.  After the arrays have been converted into strings we can:
+// 3.  After the hyphens have been removed, you should be able to use the code you had written above to:
 
-        create an if/else statement: IF str1 == str2, THEN winLoseStatus = true, ELSE IF numOfGuess == 0, THEN winLoseStatus = true.
+//     convert both arrays (censoredWordCheckStatus && arrUp) into strings using .join(' '); method.
 
-    5.  After the actual checkstatus part of the function has been created we can:
+            var str1 = censoredWordCheckStatus.join('');
+            var str2 = arrUp.join('');
+            console.log("str1: " + str1, "str2: " + str2);
 
-        Set up the increment, and change the targetIDs for both Wins and Losses.
+            if (str1 == str2) {
+                console.log("The strings match!")
+            } else {
+                console.log("The strings DON'T match!")
+            }
 
-    6.  After that is finished:
+// 4.  After the arrays have been converted into strings we can:
 
-        Check gameReset Function for completion and if not completed write psuedo-code and then complete and implement into this function for both statuses.
+//     create an if/else statement: IF str1 == str2, THEN winLoseStatus = true, ELSE IF numOfGuess == 0, THEN winLoseStatus = true.
 
-    */
+// 5.  After the actual checkstatus part of the function has been created we can:
+
+//     Set up the increment, and change the targetIDs for both Wins and Losses.
+
+// 6.  After that is finished:
+
+//     Check gameReset Function for completion and if not completed write psuedo-code and then complete and implement into this function for both statuses.
+
 }
 
 
@@ -256,7 +280,7 @@ document.onkeyup = function (event) {
             letterCheck(userChoice, userChoiceUp, arrLow, wrongLettersUp, wrongLetters);
 
             winLoseCheck();
-            console.log(censoredWord);
+            // console.log(censoredWord);
            
         }
     }
