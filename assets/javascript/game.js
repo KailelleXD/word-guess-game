@@ -118,7 +118,6 @@ function userChoiceCheck(char, lower, upper, display) {
 
 
 /*
-
 // Function Declaration to refresh wordGuessArea
 function wordGuessRefresh() {
     
@@ -133,28 +132,21 @@ function wordGuessRefresh() {
             newHeading.setAttribute("class",arrLow[j]);
             newHeading.textContent = censoredWord[j];
             wordGuessArea.appendChild(newHeading);
-
             // Replace text inside <div id="infoPanel"> with, "Please choose a letter between A-Z!"
             var targetInfoPanel = document.getElementById("infoPanel");
             targetInfoPanel.textContent = "Please choose a letter between A-Z!";
         }
     }  
 } // STOPPED HERE FOR THE NIGHT. CAN'T GET REPEAT LETTERS TO WORK!!!
-
 */
 
 /*
-
 // Function Declaration to clear wordGuessArea
 function wordGuessClear() {
     var targetWordGuessArea = document.getElementById("wordGuessArea");
     targetWordGuessArea.textContent = "";
 }
-
-
-
 //-----------------
-
 */
 
 
@@ -246,23 +238,3 @@ document.onkeyup = function (event) {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-  
