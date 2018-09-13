@@ -8,19 +8,89 @@ function getRandomInt(max) {
 
 // Function Declaration to change all letters to lowercase.
 function arrLower(arr1) {
-    for(var l = 0; l < arr1.length; l++) {
+    for (var l = 0; l < arr1.length; l++) {
         arrLow.push(arr1[l].toLowerCase());
     }
 } // Make sure to declare an empty array named arrLow
 
 // Function Declaration to change all letters to uppercase.
 function arrUpper(arr1) {
-    for(var u = 0; u < arr1.length; u++) {
+    for (var u = 0; u < arr1.length; u++) {
         arrUp.push(arr1[u].toUpperCase());
     }
 } // Make sure to declare an empty array named arrUp
 
-// Function Declaration to check if key input matches 
+// Function Declaration to merge censoredWord Array and upper Array into a new array called displayArr. Depending on the boolean value of the span that contains the character.
+function mergeArr(low, up, wSplit, cWord) {
+    for (var m = 0; m < wSplit.length; m++) {
+        var targetCharSpan = document.getElementsByClassName(low[m]);
+        var charSpanVal = targetCharSpan.value;
+        if (charSpanVal == true) {
+            displayArr.push(up[m]);
+        } else if (charSpanVal == false) {
+            displayArr.push(cWord[m]);
+        }
+    }
+}
+
+// Function Declaration to convert wordSplit Array into a series of corresponding dashes and spaces.
+function censorWord(cWord, wSplit) {
+    // For loop to convert answer into "hidden" dashes (censoredWord)
+        for (var i = 0; i < wSplit.length; i++) {
+            if (wSplit[i] == " ") {
+                cWord.push(" "); // Can't seem to get this to work! Temporary solution in the for loop below!
+            } else {
+                cWord.push("__ "); // two underscroll characters.
+            }
+        }
+}
+
+// Function Declaration to check the user's character choice.
+function userChoiceCheck(uChoice, low) {
+    for (var j = 0; j < low.length; j++) {
+        if (uChoice == low[j]) {
+            var element = document.getElementsByClassName(low[j]);
+            console.log(element.value);
+            console.log(document.getElementsByClassName(low[j]));
+            console.log("The value of " + low[j] + " should now be true!");
+        } else {
+            // document.getElementsByClassName(low[j].class).value = "false";
+            // console.log("The value of " + low[j] + " should now be false!");
+        }
+    }
+}
+
+// Function Declaration to clear the wordGuessArea.
+function wordGuessClear() {
+    var targetWordGuessArea = document.getElementById("wordGuessArea");
+    targetWordGuessArea.textContent = "";
+}
+
+// Function Declaration to refresh the wordGuessArea and display any changes made.
+function wordGuessRefresh(cWord, low) {
+    // For loop to replace text inside wordGuessArea with censoredWord.
+    wordGuessClear();
+    for (var k = 0; k < cWord.length; k++) {
+        if (cWord[k] == " ") {
+            var newHeading = document.createElement("br");
+            wordGuessArea.appendChild(newHeading);
+        } else {
+            var newHeading = document.createElement("span");
+            newHeading.setAttribute("class", low[k]);
+            newHeading.setAttribute("value", "false");
+            newHeading.textContent = cWord[k];
+            wordGuessArea.appendChild(newHeading);
+
+            // Replace text inside #infoPanel with, "Please choose a letter between A-Z!
+            var targetInfoPanel = document.getElementById("infoPanel");
+            targetInfoPanel.textContent = "Please choose a letter between A-Z!";
+        }
+    }
+}
+
+
+// Function Declaration to check if key input matches
+/*
 function userChoiceCheck(char, lower, upper, display) {
     for ( var m = 0; m < lower.length; m++) {
         if (char == lower[m]) { // If userChoice matches any character in the array, replace that character in the <h1 id="wordGuessArea">
@@ -44,6 +114,10 @@ function userChoiceCheck(char, lower, upper, display) {
         }
     }
 }
+*/
+
+
+/*
 
 // Function Declaration to refresh wordGuessArea
 function wordGuessRefresh() {
@@ -67,6 +141,10 @@ function wordGuessRefresh() {
     }  
 } // STOPPED HERE FOR THE NIGHT. CAN'T GET REPEAT LETTERS TO WORK!!!
 
+*/
+
+/*
+
 // Function Declaration to clear wordGuessArea
 function wordGuessClear() {
     var targetWordGuessArea = document.getElementById("wordGuessArea");
@@ -76,6 +154,9 @@ function wordGuessClear() {
 
 
 //-----------------
+
+*/
+
 
 
 // Arrays with initialized content.
@@ -106,25 +187,24 @@ var censoredWord = []; // Array to store the converted censored word.
 var wrongLetter = []; // Array to store all wrong letter chosen by user.
 var arrLow = []; // Array to store the currentWord in lowercase form.
 var arrUp = []; // Array to store the currentWord in uppercase form.
+var displayArr = []; // Array to store the characters to be displayed at wordGuessArea.
 
 
-// Call-back functions to create arrays with characters in both lower and uppercase.
-arrLower(wordSplit);
-arrUpper(wordSplit);
-//-----------------------
+
 
 
 // Console.log checks!
-console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
+// console.log("Total number of Animals in zooAnimals: " + zooAnimals.length);
 console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
 console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
 console.log("Variable currentWord contains: " + currentWord);
 console.log(wordSplit);
-console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
+// console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
 console.log(censoredWord); // Should be blank since Main Game Code has yet to run.
-console.log(arrLow);
-console.log(arrUp);
-console.log(alphaAllCase);
+// console.log(arrLow);
+// console.log(arrUp);
+// console.log(alphaAllCase);
+
 
 // Start of Main Game Code!!!
 //---------------------------
@@ -136,20 +216,20 @@ document.onkeyup = function (event) {
     if (gameStatus == false && winCounter == 0 && lossCounter == 0) { // Sets up initial game state.
         gameStatus = true;
 
-        // For loop to convert answer into "hidden" dashes (censoredWord)
-        for(var i = 0; i < wordSplit.length; i++) {
-            if (wordSplit[i] == " ") {
-                censoredWord.push(" "); // Can't seem to get this to work! Temporary solution in the for loop below!
-            } else {
-                censoredWord.push("__ ");
-            }
-        }
+        censorWord(censoredWord, wordSplit);
+
+        // Call-back functions to create arrays with characters in both lower and uppercase.
+        arrLower(wordSplit);
+        arrUpper(wordSplit);
+        //-----------------------
+        mergeArr(arrLow, arrUp, wordSplit, censoredWord);
+        console.log(displayArr);
 
         // Clears initial texxt content, "PRESS ANY KEY TO START!"
         wordGuessClear();
 
         // Call-back function to refresh wordGuessArea
-        wordGuessRefresh(); 
+        wordGuessRefresh(censoredWord, arrLow);
 
     } else if (gameStatus == true) { // All main game code AFTER player presses any key to start.
         
@@ -161,9 +241,8 @@ document.onkeyup = function (event) {
         newDiv.textContent = "(Please choose a letter between A-Z)";
         targetInfoPanel.appendChild(newDiv);
         } else {
-            userChoiceCheck(userChoice, arrLow, arrUp, censoredWord)
-            console.log(userChoice);
-           
+            userChoiceCheck(userChoice, arrLow);
+            console.log(userChoice);           
         }
     }
 }
