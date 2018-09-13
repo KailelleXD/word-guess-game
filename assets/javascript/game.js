@@ -53,16 +53,12 @@ function userChoiceCheck(char, lower, upper, display) {
 } // userChoiceCheck(userChoice, arrLow, arrUp, censoredWord);
 
 function letterCheck(char, charUp, lower, upper, wLetters) {
-    var valCheckWrong = wLetters.includes(char);
+    var charUp = char.toUpperCase();
+    var valCheckWrong = wLetters.includes(charUp);
     var valCheckRight = lower.includes(char);
-
-    console.log("valCheckWrong: " + valCheckWrong);
-    console.log("valCheckRight: " + valCheckRight);
-    console.log("gameStatus: " + gameStatus);
+    var valCheckWrongUp = wLetters.includes(char);
 
     arrUpper(wLetters, upper);
-
-    var charUp = char.toUpperCase();
 
     if (valCheckWrong == true && valCheckRight == false) { // if either value check is true.
         targetInfoPanel.textContent = "You've already chosen that letter!";
@@ -72,19 +68,19 @@ function letterCheck(char, charUp, lower, upper, wLetters) {
         numOfGuess--;
         targetNumOfGuess.textContent = numOfGuess;
         wLetters.push(charUp); // then .push the character to wrongLetters Array.
-        
-        console.log("Here are the current letters contained in the wrongLetters Array: " + wLetters);
-        console.log(wrongLettersUp);
         targetLettersGuessed.textContent = wLetters.join(" ");  
-    } else if (valCheckWrong == false && valCheckRight == true) {
+    } else if (valCheckWrong == false && valCheckRight == true && valCheckWrongUp == true) {
         wLetters.push(charUp);
-                
         targetInfoPanel.textContent = "You found the letter: '" + charUp + "'";
         targetLettersGuessed.textContent = wLetters.join(" "); 
+    } else if (valCheckWrong == false && valCheckRight == true && valCheckWrongUp == false) {
+        targetInfoPanel.textContent = "You found the letter: '" + charUp + "'";
+        wLetters.push(charUp);
+        targetLettersGuessed.textContent = wLetters.join(" ");
+        valCheckWrong = wLetters.includes(charUp);
+    } else if (valCheckWrong == true && valCheckRight == true && valCheckWrongUp == false) {
+        targetInfoPanel.textContent = "You already found that letter!";
     }
-
-    
-
 } // letterCheck(userChoice, userChoiceUp, arrLow, wrongLettersUp, wrongLetters);
 
 // Function Declaration to clear wordGuessArea
