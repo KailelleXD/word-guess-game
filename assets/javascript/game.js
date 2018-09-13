@@ -40,28 +40,16 @@ function wordGuessRefresh() {
 // Function Declaration to check if key input matches 
 function userChoiceCheck(char, lower, upper, display) {
 
-    censoredWord.length = 0;
+    // censoredWord.length = 0;
 
-    
-    
     for (var j = 0; j < lower.length; j++) {
         if (char == lower[j]) {
-            userChoiceCorrect.push(lower[j]);
-            display.push(upper[j]);
-        } else if (lower[j] == " ") {
-            display.push(" - ");
-        } else if (userChose == "true") {
-            display.push(upper[j]);
-        } else {
-            display.push(" _ ");
+            display[j] = upper[j];
         }
-    }
 
     targetWordGuessArea.textContent = censoredWord.join(' ');
-    var userChose = userChoiceCorrect.includes(lower[j]);
-    console.log(userChose);
-}
-
+    }   
+} // userChoiceCheck(userChoice, arrLow, arrUp, censoredWord);
 
 
 // Function Declaration to clear wordGuessArea
