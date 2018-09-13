@@ -20,56 +20,52 @@ function arrUpper(arr1) {
     }
 } // Make sure to declare an empty array named arrUp
 
-// Function Declaration to check if key input matches 
-function userChoiceCheck(char, lower, upper, display) {
-    for ( var m = 0; m < lower.length; m++) {
-        if (char == lower[m]) { // If userChoice matches any character in the array, replace that character in the <h1 id="wordGuessArea">
-            var targetInfoPanel = document.getElementById("infoPanel"); // Change msg in infoPanel to: "You found the letter " + userChoice;
-            targetInfoPanel.textContent = "You found the letter " + "'" + upper[m] + "'";
-            // var targetLetters = document.getElementsByClassName(lower[m]); // Change the corresponding underscroll bar to the correct/userchosen letter/s.
-            // console.log(targetLetters);
-            // targetLetters[m].textContent = upper[m];
-            var index = lower.indexOf(lower[m]);
-                console.log(display);
-                console.log(index);
-                if (index !== -1) {
-                    display[index] = upper[m];
-                    wordGuessRefresh();                    
-                }
-        } else { // If userChoice does not match any character in the array, add that character to <div id="lettersGuessed">
-            // Decrement numOfGuess.
-            // Change msg in infoPanel to: "You chose an incorrect letter!
-            // .push arr1[m] to wrongLetter array.
-            // refresh msg in lettersGuessed to add any changes to wrongLetter array.
-        }
-    }
-}
-
 // Function Declaration to refresh wordGuessArea
 function wordGuessRefresh() {
     
-    // For loop to replace text inside <h1 id="wordGuessArea"> with the censoredWord.
+    // For loop to replace text inside wordGuessArea with underscroll bars.
     wordGuessClear();
-    for(var j = 0; j < censoredWord.length; j++) {
-        if (censoredWord[j] == " ") {
-        var newHeading = document.createElement("br"); // Temporary solution since I can't figure out how to add more whitespace.
-        wordGuessArea.appendChild(newHeading);
-        } else {
-            var newHeading = document.createElement("span");
-            newHeading.setAttribute("class",arrLow[j]);
-            newHeading.textContent = censoredWord[j];
-            wordGuessArea.appendChild(newHeading);
 
-            // Replace text inside <div id="infoPanel"> with, "Please choose a letter between A-Z!"
-            var targetInfoPanel = document.getElementById("infoPanel");
-            targetInfoPanel.textContent = "Please choose a letter between A-Z!";
+    for (var i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] == " ") {
+            censoredWord.push(" - ");
+        } else {
+            censoredWord.push(" _ ");
         }
-    }  
-} // STOPPED HERE FOR THE NIGHT. CAN'T GET REPEAT LETTERS TO WORK!!!
+    }
+
+    targetWordGuessArea.textContent = censoredWord.join(' ');
+}
+
+// Function Declaration to check if key input matches 
+function userChoiceCheck(char, lower, upper, display) {
+
+    censoredWord.length = 0;
+
+    
+    
+    for (var j = 0; j < lower.length; j++) {
+        if (char == lower[j]) {
+            userChoiceCorrect.push(lower[j]);
+            display.push(upper[j]);
+        } else if (lower[j] == " ") {
+            display.push(" - ");
+        } else if (userChose == "true") {
+            display.push(upper[j]);
+        } else {
+            display.push(" _ ");
+        }
+    }
+
+    targetWordGuessArea.textContent = censoredWord.join(' ');
+    var userChose = userChoiceCorrect.includes(lower[j]);
+    console.log(userChose);
+}
+
+
 
 // Function Declaration to clear wordGuessArea
 function wordGuessClear() {
-    var targetWordGuessArea = document.getElementById("wordGuessArea");
     targetWordGuessArea.textContent = "";
 }
 
@@ -106,6 +102,11 @@ var censoredWord = []; // Array to store the converted censored word.
 var wrongLetter = []; // Array to store all wrong letter chosen by user.
 var arrLow = []; // Array to store the currentWord in lowercase form.
 var arrUp = []; // Array to store the currentWord in uppercase form.
+var userChoiceCorrect = [];
+
+var targetWordGuessArea = document.getElementById("wordGuessArea");
+var targetInfoPanel = document.getElementById("infoPanel");
+
 
 
 // Call-back functions to create arrays with characters in both lower and uppercase.
@@ -136,15 +137,6 @@ document.onkeyup = function (event) {
     if (gameStatus == false && winCounter == 0 && lossCounter == 0) { // Sets up initial game state.
         gameStatus = true;
 
-        // For loop to convert answer into "hidden" dashes (censoredWord)
-        for(var i = 0; i < wordSplit.length; i++) {
-            if (wordSplit[i] == " ") {
-                censoredWord.push(" "); // Can't seem to get this to work! Temporary solution in the for loop below!
-            } else {
-                censoredWord.push("__ ");
-            }
-        }
-
         // Clears initial texxt content, "PRESS ANY KEY TO START!"
         wordGuessClear();
 
@@ -154,14 +146,9 @@ document.onkeyup = function (event) {
     } else if (gameStatus == true) { // All main game code AFTER player presses any key to start.
         
         if (alphaAllCase.indexOf(userChoice) == -1) {
-        var targetInfoPanel = document.getElementById("infoPanel");
         targetInfoPanel.textContent = "You pressed an incorrect key!";
-
-        var newDiv = document.createElement("div");
-        newDiv.textContent = "(Please choose a letter between A-Z)";
-        targetInfoPanel.appendChild(newDiv);
         } else {
-            userChoiceCheck(userChoice, arrLow, arrUp, censoredWord)
+            userChoiceCheck(userChoice, arrLow, arrUp, censoredWord);
             console.log(userChoice);
            
         }
