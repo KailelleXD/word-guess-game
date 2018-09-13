@@ -89,22 +89,44 @@ function wordGuessClear() {
 }
 
 function winLoseCheck() {
-    var str1 = censoredWord.join('');
-    var str2 = arrUp.join('');
-    // console.log("str1: " + str1, "str2: " + str2);
-    if (str1 == str2) {
-        winLoseStatus = true;
-        winCounter++;
-        targetWins.textContent = winCounter;
-        console.log("You won!");
-    } else if (numOfGuess == 0) {
-        winLoseStatus = true;
-        lossCounter++;
-        targetLosses.textContent = lossCounter;
-        console.log("You loss!");
+    censoredWordCheckStatus.length = 0;
+    for (var k = 0; k < censoredWord.length; k++) {
+        censoredWordCheckStatus[k] = censoredWord[k];
+
+        if (censoredWordCheckStatus[k] == "-") {
+            censoredWordCheckStatus.push(" ");
+        } else {
+            censoredWordCheckStatus.push(censoredWord[k]);
+        }
+        
+        var str1 = censoredWordCheckStatus.join('');
+        var str2 = arrUp.join('');
+        console.log("str1: " + str1, "str2: " + str2);
+        if (str1 == str2) {
+            winLoseStatus = true;
+            winCounter++;
+            targetWins.textContent = winCounter;
+            console.log("You won!");
+            gameReset();
+        } else if (numOfGuess == 0) {
+            winLoseStatus = true;
+            lossCounter++;
+            targetLosses.textContent = lossCounter;
+            console.log("You loss!");
+            gameReset();
+        }
     }
 }
 
+function gameReset() {
+    if (winLoseStatus = true) {
+        zooAnimalsIndex = getRandomInt(zooAnimals.length)
+        numOfGuess = 10;
+        targetNumOfGuess.textContent = numOfGuess;
+        wordGuessRefresh();
+        
+    }
+}
 //-----------------
 
 
@@ -135,6 +157,7 @@ var zooAnimalsIndex = getRandomInt(zooAnimals.length) // Initializes a random nu
 var currentWord = zooAnimals[zooAnimalsIndex]; // Locates the currentWord within the zooAnimals array and initializes it in currentWord.
 var wordSplit = currentWord.split(""); // Method that splits the string found in currentWord into an array of individual characters.
 var censoredWord = []; // Array to store the converted censored word.
+var censoredWordCheckStatus = [];
 var wrongLetters = []; // Array to store all wrong letter chosen by user.
 var wrongLettersUp = [];
 var userChoiceUp = [];
