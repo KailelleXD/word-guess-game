@@ -162,7 +162,7 @@ function gameReset() {
     // console.log("getRandomInt function chose this number: " + zooAnimalsIndex);
     // console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
     // console.log("Variable currentWord contains: " + currentWord);
-    console.log(wordSplit);
+    // console.log(wordSplit);
     // console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
     
     winLoseStatus = false;
@@ -194,10 +194,10 @@ function gameReset() {
 
 function secondaryInfo() {
     // When the winLoseStatus == true. we create a switch statement with the var zooAnimalsIndex. Each case will manip the Secondary info panel to provide info on each animal.
-    console.log("The function secondaryInfo() has been called");
-    console.log("censoredWord: " + censoredWord);
+    // console.log("The function secondaryInfo() has been called");
+    // console.log("censoredWord: " + censoredWord);
     animalWord = censoredWord.join("");
-    console.log("animalWord: " + animalWord);
+    // console.log("animalWord: " + animalWord);
     targetAnimalName.textContent = animalWord;
 
 
@@ -236,116 +236,116 @@ function secondaryInfo() {
             case "GIRAFFE":
                 document.getElementById("aniPic1").src="assets/images/giraffe1.jpg";
                 document.getElementById("aniPic2").src="assets/images/giraffe2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Life span is 15 to 20 years.";
+                targetAniInfo2.textContent = "Females grow up to 14 ft. tall, males grow up to 18 ft. tall.";
+                targetAniInfo3.textContent = "Females weigh up to 1,500 lbs, males weigh up to 3,000 lbs.";
+                targetAniInfo4.textContent = "A giraffe's feet are the size of a dinner plate—12 inches across.";
+                targetAniInfo5.textContent = "A giraffe’s eyes are the size of golf balls.";
                 break;
 
             case "SLOTH":
                 document.getElementById("aniPic1").src="assets/images/sloth1.jpg";
-                document.getElementById("aniPic2").src="assets/images/sloth2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                document.getElementById("aniPic2").src="assets/images/sloth2.png";
+                targetAniInfo1.textContent = "They live in trees in the tropical and cloud forests of Central and South America.";
+                targetAniInfo2.textContent = "Live an average of 15 years.";
+                targetAniInfo3.textContent = "Can weigh 10 to 20 lbs.";
+                targetAniInfo4.textContent = "With their low-energy diet of leaves and occasional fruit, sloths move slowly and sleep 15 hours a day to conserve energy.";
+                targetAniInfo5.textContent = "Organs such as the heart, liver, and spleen are placed differently in sloths than in other mammals to accommodate their upside-down lifestyle.";
                 break;
 
             case "LION":
                 document.getElementById("aniPic1").src="assets/images/lion1.jpg";
                 document.getElementById("aniPic2").src="assets/images/lion2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Can live 15 years in the wild, and up to 30 years in zoos.";
+                targetAniInfo2.textContent = "Females are 4.6 to 5.7 ft. long, males are 5.6 to 8.3 ft. long.";
+                targetAniInfo3.textContent = "Females weigh 270 to 400 lbs, males weigh 330 to 570 lbs.";
+                targetAniInfo4.textContent = "A lion’s roar can be heard up to 3 miles away.";
+                targetAniInfo5.textContent = "A male lion can eat about a quarter of his body weight (as much as about 140 pounds) in a single meal.";
                 break;
 
             case "PENGUIN":
                 document.getElementById("aniPic1").src="assets/images/penguin1.jpg";
                 document.getElementById("aniPic2").src="assets/images/penguin2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "There are 17 species, and all are found exclusively in the Southern hemisphere.";
+                targetAniInfo2.textContent = "Depending on the species, their height can range 16 in. to 4 ft. tall.";
+                targetAniInfo3.textContent = "Gentoo Penguin is the fastest species, and can swim up to 22 miles per hour.";
+                targetAniInfo4.textContent = "A penguin's striking coloring is a matter of camouflage; from above, its black back blends into the murky depths of the ocean. From below, its white belly is hidden against the bright surface.";
+                targetAniInfo5.textContent = "Fossils place the earliest penguin relative at some 60 million years ago, meaning an ancestor of the birds we see today survived the mass extinction of the dinosaurs.";
                 break;
 
             case "TIGER":
                 document.getElementById("aniPic1").src="assets/images/tiger1.jpg";
                 document.getElementById("aniPic2").src="assets/images/tiger2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live an average 14 to 18 years.";
+                targetAniInfo2.textContent = "Depending on gender and location, they can be 4.8 to to 9.5 ft. in length.";
+                targetAniInfo3.textContent = "Can be 165 to 716 lbs.";
+                targetAniInfo4.textContent = "Each tiger has its very own stripe pattern.";
+                targetAniInfo5.textContent = "They can carry something twice their body weight 10 ft. up a tree.";
                 break;
 
             case "HIPPOPOTAMUS":
                 document.getElementById("aniPic1").src="assets/images/hippo1.jpg";
                 document.getElementById("aniPic2").src="assets/images/hippo2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live an average of 36 years.";
+                targetAniInfo2.textContent = "Females weigh around 3,000 lbs, but males can weigh as much as 9,920 lbs.";
+                targetAniInfo3.textContent = "An adult hippo can hold its breath underwater for up to 30 minutes.";
+                targetAniInfo4.textContent = "They can store two days' worth of grass in their stomachs and can go up to three weeks without eating.";
+                targetAniInfo5.textContent = "A group of hippos is sometimes called a bloat, pod, or siege.";
                 break;
 
             case "RED - PANDA":
                 document.getElementById("aniPic1").src="assets/images/redpanda1.jpg";
                 document.getElementById("aniPic2").src="assets/images/redpanda2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live 8 to 10 years in the wild, and up to 15 in zoos.";
+                targetAniInfo2.textContent = "They can weigh 6 to 14 lbs, depending on gender.";
+                targetAniInfo3.textContent = "The Chinese name for the red panda is 'hun-ho,' meaning 'fire fox.'";
+                targetAniInfo4.textContent = "Almost half of the red panda's total body length is in its tail.";
+                targetAniInfo5.textContent = "In China, red pandas and giant pandas share the same habitat: bamboo forests.";
                 break;
 
             case "KOALA":
                 document.getElementById("aniPic1").src="assets/images/koala1.jpg";
                 document.getElementById("aniPic2").src="assets/images/koala2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They usually live 10 to 15 years.";
+                targetAniInfo2.textContent = "They are not bears, they are members of a group of pouched animals called marsupials.";
+                targetAniInfo3.textContent = "Koalas keep their coat clean by using a grooming claw rather than licking the coat.";
+                targetAniInfo4.textContent = "Koalas eat a little dirt now and then to help them digest their eucalyptus leaf meal.";
+                targetAniInfo5.textContent = "To conserve energy, koalas sleep 18 to 22 hours a day.";
                 break;
 
             case "POLAR - BEAR":
                 document.getElementById("aniPic1").src="assets/images/polarbear1.jpg";
-                document.getElementById("aniPic2").src="assets/images/polarbear2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                document.getElementById("aniPic2").src="assets/images/polarbear2.png";
+                targetAniInfo1.textContent = "Females live an average 24.2 years, males only live an average of 20.7 years.";
+                targetAniInfo2.textContent = "Females weigh 330 to 650 lbs, males weigh 700 to 1,200 lbs.";
+                targetAniInfo3.textContent = "Built to stay warm in their cold habitat, polar bears sometimes overheat and have to cool off in the chilly water.";
+                targetAniInfo4.textContent = "To clean their fur, polar bears roll in the snow.";
+                targetAniInfo5.textContent = "A polar bear can swim at a speed of up to 6 miles per hour.";
                 break;
 
-            case "LEMURS":
+            case "LEMUR":
                 document.getElementById("aniPic1").src="assets/images/lemur1.jpg";
                 document.getElementById("aniPic2").src="assets/images/lemur2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live an average 16.7 years.";
+                targetAniInfo2.textContent = "The blue-eyed black lemur is the only primate besides humans to have blue eyes.";
+                targetAniInfo3.textContent = "The Madame Berthe’s mouse lemur is thought to be the smallest primate in the world, and can fit in a teacup.";
+                targetAniInfo4.textContent = "Black-and-white ruffed lemur mothers make a nest for the birth and care of her babies, lining it with her own hair.";
+                targetAniInfo5.textContent = "The name lemur is from the Latin lemurs, meaning spirits of the dead. This name was selected for the lemur’s silent movement.";
                 break;
 
             case "RHINOCEROS":
                 document.getElementById("aniPic1").src="assets/images/rhino1.jpg";
                 document.getElementById("aniPic2").src="assets/images/rhino2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They have a lifespan of 40 to 45 years.";
+                targetAniInfo2.textContent = "Depending on species, they can way 1,765 to 5,000 lbs.";
+                targetAniInfo3.textContent = "A black rhino can run as fast as 40 miles per hour.";
+                targetAniInfo4.textContent = "White rhino males can be persistent, with courtship lasting 5 to 20 days.";
+                targetAniInfo5.textContent = "Rhinos roll in mud (called wallowing), and the mud can act as bug repellent and sunscreen.";
                 break;
 
             case "ZEBRA":
                 document.getElementById("aniPic1").src="assets/images/zebra1.jpg";
-                document.getElementById("aniPic2").src="assets/images/zebra2.jpg";
+                document.getElementById("aniPic2").src="assets/images/zebra2.png";
                 targetAniInfo1.textContent = "";
                 targetAniInfo2.textContent = "";
                 targetAniInfo3.textContent = "";
@@ -385,7 +385,7 @@ function secondaryInfo() {
 
             case "ORANGUTAN":
                 document.getElementById("aniPic1").src="assets/images/orangutan1.jpg";
-                document.getElementById("aniPic2").src="assets/images/orangutan2.jpg";
+                document.getElementById("aniPic2").src="assets/images/orangutan2.png";
                 targetAniInfo1.textContent = "";
                 targetAniInfo2.textContent = "";
                 targetAniInfo3.textContent = "";
@@ -505,13 +505,13 @@ function secondaryInfo() {
 // Arrays with initialized content.
 //---------------------------------
 
-// zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Penguin",
-//               "Tiger","Hippopotamus","Red Panda","Koala","Polar Bear","Lemur","Rhinoceros",
-//               "Zebra","Cheetah","Flamingo","Meerkat","Orangutan","Capybara","Tamarin",
-//               "Snow Leopard","Sea Lion","Jaguar","Gibbon","River Otter",
-//               "Chimpanzee","Komodo Dragon","Anteater"];
+zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Penguin",
+              "Tiger","Hippopotamus","Red Panda","Koala","Polar Bear","Lemur","Rhinoceros",
+              "Zebra","Cheetah","Flamingo","Meerkat","Orangutan","Capybara","Tamarin",
+              "Snow Leopard","Sea Lion","Jaguar","Gibbon","River Otter",
+              "Chimpanzee","Komodo Dragon","Anteater"];
 
-zooAnimals = ["Monkey", "Giant Panda", "Elephant"] //To debug issue where space does not show in wordGuessArea.
+// zooAnimals = ["Monkey", "Giant Panda", "Elephant"] //To debug issue where space does not show in wordGuessArea.
 
 alphaAllCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
                 "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -562,7 +562,7 @@ var targetAniInfo5 = document.getElementById("aniInfo5");
 // console.log("Number " + zooAnimalsIndex + " is " + zooAnimals[zooAnimalsIndex] + " in zooAnimals");
 // console.log(currentWord);
 // console.log("Variable currentWord contains: " + currentWord);
-console.log(wordSplit);
+// console.log(wordSplit);
 // console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
 // console.log(censoredWord); // Should be blank since Main Game Code has yet to run.
 // console.log(arrLow);
@@ -583,7 +583,7 @@ document.onkeyup = function (event) {
       
     var userChoice = event.key;
 
-    console.log(censoredWord);
+    // console.log(censoredWord);
 
     if (gameStatus == false && winCounter == 0 && lossCounter == 0) { // Sets up initial game state.
         gameStatus = true;
