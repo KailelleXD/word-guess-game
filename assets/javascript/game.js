@@ -21,7 +21,6 @@ function arrUpper(arr1, Arr2) {
 } // Make sure to declare an empty array named arrUp
 
 
-
 // Function Declaration to refresh wordGuessArea
 function wordGuessRefresh() {
     
@@ -101,7 +100,7 @@ function lettersGuessedClear() {
     wrongLetters = [];
 }
 
-function winLoseCheck() {
+function winLoseCheck(animal) {
     // console.log("inside the function winLoseCheck: censoredWord = " + censoredWord);
     censoredWordCheckStatus = censoredWord.slice(0);
     for (var k = 0; k < censoredWordCheckStatus.length; k++) {
@@ -116,12 +115,18 @@ function winLoseCheck() {
 
     if (str1 == str2) {
         // console.log("The strings match!(WIN)");
+        playAudio();
         targetInfoPanel.textContent = "You Won! (Press Any Key to Continue)";
         winCounter++;
         targetWins.textContent = winCounter;
         winLoseStatus = true;
         gameStatus = false;
-        secondaryInfo();
+        secondaryInfo(arrUp);
+
+        var animal = str2;
+
+        return animal;
+
     } else if (str1 != str2 && numOfGuess == 0) {
         // console.log("The strings DON'T match!(LOSS)");
         targetInfoPanel.textContent = "You Lost! The animal was a " + str2 + " (Press Any Key to Continue)";
@@ -129,7 +134,7 @@ function winLoseCheck() {
         targetLosses.textContent = lossCounter;
         winLoseStatus = true;
         gameStatus = false;
-        secondaryInfo();
+        secondaryInfo(arrUp);
     }
 }
 
@@ -142,7 +147,7 @@ function gameReset() {
     lettersGuessedClear();
     numOfGuess = 10;
 
-    var roundTotal = winCounter + lossCounter;
+    var roundTotal = winCounter + lossCounter + 1;
 
     targetInfoPanel.textContent = "Round: " + roundTotal + "! Here's your next word!";
 
@@ -164,6 +169,7 @@ function gameReset() {
     // console.log("Variable currentWord contains: " + currentWord);
     // console.log(wordSplit);
     // console.log("There are a total of: " + wordSplit.length + " characters in the word: " + currentWord);
+    console.log("The animal is a " + arrUp.join(""));
     
     winLoseStatus = false;
     gameStatus = true;
@@ -192,17 +198,15 @@ function gameReset() {
     return censoredWord;
 }
 
-function secondaryInfo() {
+function secondaryInfo(animalCaps) {
     // When the winLoseStatus == true. we create a switch statement with the var zooAnimalsIndex. Each case will manip the Secondary info panel to provide info on each animal.
     // console.log("The function secondaryInfo() has been called");
     // console.log("censoredWord: " + censoredWord);
-    animalWord = censoredWord.join("");
-    // console.log("animalWord: " + animalWord);
-    targetAnimalName.textContent = animalWord;
+    targetAnimalName.textContent = animalCaps.join("");
 
 
     if(winLoseStatus == true) {
-        switch(animalWord) {
+        switch(animalCaps.join("")) {
             case "MONKEY":
                 document.getElementById("aniPic1").src="assets/images/monkey1.jpg";
                 document.getElementById("aniPic2").src="assets/images/monkey2.jpg";
@@ -224,8 +228,8 @@ function secondaryInfo() {
                 break;
 
             case "ELEPHANT":
-                document.getElementById("aniPic1").src="assets/images/elephant.jpg";
-                document.getElementById("aniPic2").src="assets/images/elephant.jpg";
+                document.getElementById("aniPic1").src="assets/images/elephant1.jpg";
+                document.getElementById("aniPic2").src="assets/images/elephant2.jpg";
                 targetAniInfo1.textContent = "They can live from 30 to over 50 years.";
                 targetAniInfo2.textContent = "Female elephants are an average 8 ft. in height (at the shoulders), and males are an average 10.5 ft. ";
                 targetAniInfo3.textContent = "Female elephants can weigh up to 8,000 lbs, and males can weigh up to 15,000 lbs.";
@@ -346,151 +350,151 @@ function secondaryInfo() {
             case "ZEBRA":
                 document.getElementById("aniPic1").src="assets/images/zebra1.jpg";
                 document.getElementById("aniPic2").src="assets/images/zebra2.png";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Their lifespan is 25 years.";
+                targetAniInfo2.textContent = "They weigh 550 to 990 lbs.";
+                targetAniInfo3.textContent = "Each zebra has a unique stripe pattern—no two are alike.";
+                targetAniInfo4.textContent = "A zebra's eyesight at night is thought to be about as good as that of an owl.";
+                targetAniInfo5.textContent = "Zebras have a pad of fat under their mane that keeps it standing straight up.";
                 break;
 
             case "CHEETAH":
                 document.getElementById("aniPic1").src="assets/images/cheetah1.jpg";
                 document.getElementById("aniPic2").src="assets/images/cheetah2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live an average of 12 years in the wild, and up to 17 years in zoos.";
+                targetAniInfo2.textContent = "They weigh 84 to 143 lbs, males weighing more than females.";
+                targetAniInfo3.textContent = "While running, a cheetah covers 20 to 22 feet in one stride, about the same distance as a racehorse.";
+                targetAniInfo4.textContent = "They can run up to 70 miles per hour.";
+                targetAniInfo5.textContent = "Cheetahs don’t need to drink water, as they get the moisture they need from the bodies of their prey.";
                 break;
 
             case "FLAMINGO":
                 document.getElementById("aniPic1").src="assets/images/flamingo1.jpg";
                 document.getElementById("aniPic2").src="assets/images/flamingo2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Their lifespan is 20 to 30 years in the wild; up to 50 years in zoos.";
+                targetAniInfo2.textContent = "Flamingos have good hearing but little or no sense of smell.";
+                targetAniInfo3.textContent = "Once shed, flamingo feathers quickly lose their color.";
+                targetAniInfo4.textContent = "In East Africa, more than one million lesser flamingos may gather together, forming the largest flock known among birds today.";
+                targetAniInfo5.textContent = "The ancient Egyptians used the silhouette of the flamingo as the hieroglyphic for the color red, and it also represented the reincarnation of Ra, the Sun God.";
                 break;
 
             case "MEERKAT":
                 document.getElementById("aniPic1").src="assets/images/meerkat1.jpg";
                 document.getElementById("aniPic2").src="assets/images/meerkat2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live an average of 8 years in the wild, and up to 13 years in zoos.";
+                targetAniInfo2.textContent = "They grow to 9 to 11.5 inches, and weigh only 1.4 to 2.1 lbs.";
+                targetAniInfo3.textContent = "They are able to kill and eat venomous snakes and scorpions without being hurt, as they have some immunity to the venom.";
+                targetAniInfo4.textContent = "Able to survive without drinking water, meerkats get the moisture they need from eating roots and tubers as well as fruit such as tsama melons.";
+                targetAniInfo5.textContent = "The skeletal structure and teeth of meerkats and other mongooses closely resemble those of the earliest carnivores.";
                 break;
 
             case "ORANGUTAN":
                 document.getElementById("aniPic1").src="assets/images/orangutan1.jpg";
                 document.getElementById("aniPic2").src="assets/images/orangutan2.png";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live up to 59 years in zoos.";
+                targetAniInfo2.textContent = "Females weigh an average of 81.5 lbs, males weigh an average of 191 lbs.";
+                targetAniInfo3.textContent = "They are the largest fruit-eating animals on Earth.";
+                targetAniInfo4.textContent = "They are the only great ape species with a native habitat outside of Africa.";
+                targetAniInfo5.textContent = "Their arms stretch out longer than their bodies—over 7 feet from fingertip to fingertip.";
                 break;
 
             case "CAPYBARA":
                 document.getElementById("aniPic1").src="assets/images/capybara1.jpg";
                 document.getElementById("aniPic2").src="assets/images/capybara2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live up to 10 years in the wild, and up to 12 years in zoos.";
+                targetAniInfo2.textContent = "They grow 3.2 to 4.2 ft. long, and weigh 60 to 174 lbs.";
+                targetAniInfo3.textContent = "Seventy-five percent of a capybara’s diet is only three to six plant species.";
+                targetAniInfo4.textContent = "Capybaras are so trainable that in Surinam a blind man once used a capybara as a guide animal.";
+                targetAniInfo5.textContent = "In the 16th century, the Catholic Church classified the capybara, which can swim, as a fish so that the meat could be eaten on Fridays and during Lent.";
                 break;
 
             case "TAMARIN":
                 document.getElementById("aniPic1").src="assets/images/tamarin1.jpg";
                 document.getElementById("aniPic2").src="assets/images/tamarin2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Tamarins are small New World monkeys, which live in the forests of South America.";
+                targetAniInfo2.textContent = "They are roughly the size of squirrels.";
+                targetAniInfo3.textContent = "They usually give birth to twins, and it’s the father who carries the babies the most.";
+                targetAniInfo4.textContent = "Lion tamarins get their name from the mane of fine hair around their face.";
+                targetAniInfo5.textContent = "Pied tamarins are the most endangered Amazonian primates.";
                 break;
 
             case "SNOW - LEOPARD":
                 document.getElementById("aniPic1").src="assets/images/snowleopard1.jpg";
                 document.getElementById("aniPic2").src="assets/images/snowleopard2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live up to 22 years in zoos.";
+                targetAniInfo2.textContent = "Snow leopards are almost impossible to locate and study in the wild because they blend in with their surroundings so well.";
+                targetAniInfo3.textContent = "They are sure-footed climbers, and have been seen at altitudes as high as 18,000 feet in summer.";
+                targetAniInfo4.textContent = "They can jump and pounce on prey as far as six times their body length.";
+                targetAniInfo5.textContent = "It’s long, thick, and luxurious tail acts as a built-in comforter when the cat wraps it around its body for added warmth.";
                 break;
 
             case "SEA - LION":
                 document.getElementById("aniPic1").src="assets/images/sealion1.jpg";
                 document.getElementById("aniPic2").src="assets/images/sealion2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live 20 to 30 years.";
+                targetAniInfo2.textContent = "Depending on species and gender, they can weigh from 110 to 2,200 lbs.";
+                targetAniInfo3.textContent = "A group of sea lions in the water is called a raft.";
+                targetAniInfo4.textContent = "Even though they have teeth, sea lions like to swallow their food whole if they can. Their sharp canine teeth are used mostly to protect themselves.";
+                targetAniInfo5.textContent = "They don’t need to drink water—they get all the water they need from the food they eat.";
                 break;
 
             case "JAGUAR":
                 document.getElementById("aniPic1").src="assets/images/jaguar1.jpg";
                 document.getElementById("aniPic2").src="assets/images/jaguar2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live 12 to 15 years in the wild, and up to 20 in zoos.";
+                targetAniInfo2.textContent = "Depending on gender and location, they can weigh from 70 to 249 lbs.";
+                targetAniInfo3.textContent = "They are the largest cats in the Western Hemisphere and the third largest overall. Only lions and tigers are bigger.";
+                targetAniInfo4.textContent = "They go 'fishing' by waving its tail over the water to attract hungry fish.";
+                targetAniInfo5.textContent = "The South American native word for jaguar, yaguara, means 'animal that kills in a single bound.'";
                 break;
 
             case "GIBBON":
                 document.getElementById("aniPic1").src="assets/images/gibbon1.jpg";
                 document.getElementById("aniPic2").src="assets/images/gibbon2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live up to 25 years in the wild.";
+                targetAniInfo2.textContent = "They are monogamous (a rare trait among primates) and live in family groups consisting of an adult pair and their young offspring.";
+                targetAniInfo3.textContent = "They are the animals we think of when we picture primates swinging gracefully through the rain forest.";
+                targetAniInfo4.textContent = "They avoid water because they can’t swim.";
+                targetAniInfo5.textContent = "They are highly intelligent, and can even recognize themselves in a mirror!";
                 break;
 
             case "RIVER - OTTER":
                 document.getElementById("aniPic1").src="assets/images/riverotter1.jpg";
                 document.getElementById("aniPic2").src="assets/images/riverotter2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They have a median life expectancy of 11.7 years.";
+                targetAniInfo2.textContent = "Otters are the only serious swimmers in the weasel family.";
+                targetAniInfo3.textContent = "They can close off their ears and nose as they dive and swim underwater.";
+                targetAniInfo4.textContent = "They have been known to share dens with beavers—but the beavers do all the building.";
+                targetAniInfo5.textContent = "They can stay submerged for up to eight minutes.";
                 break;
 
             case "CHIMPANZEE":
                 document.getElementById("aniPic1").src="assets/images/chimpanzee1.jpg";
                 document.getElementById("aniPic2").src="assets/images/chimpanzee2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "Females live an average of 38.7 years, males live around 31.7 years.";
+                targetAniInfo2.textContent = "Chimpanzees and humans share 98 percent of their genes, according to researchers.";
+                targetAniInfo3.textContent = "They don’t like to be in water and usually can’t swim.";
+                targetAniInfo4.textContent = "Unlike most other animals, chimpanzees can recognize themselves in a mirror.";
+                targetAniInfo5.textContent = "When they are happy, they make a grunting sound. A toothy 'grin' actually indicates fear or anxiety.";
                 break;
 
             case "KOMODO - DRAGON":
                 document.getElementById("aniPic1").src="assets/images/komododragon1.jpg";
                 document.getElementById("aniPic2").src="assets/images/komododragon2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They live about 30 years.";
+                targetAniInfo2.textContent = "Females grow about 6 ft. long, males grow about 10 ft. long, and they can weigh up to 176 lbs.";
+                targetAniInfo3.textContent = "They have about 60 short, sharp, teeth. They look like shark teeth, and have been compared to those of an extinct saber-tooth cat.";
+                targetAniInfo4.textContent = "In the wild, there are four times as many male Komodo dragons as there are females.";
+                targetAniInfo5.textContent = "They eat extremely fast. They have been seen consuming 5.5 pounds of meat in one minute.";
                 break;
 
             case "ANTEATER":
                 document.getElementById("aniPic1").src="assets/images/anteater1.jpg";
                 document.getElementById("aniPic2").src="assets/images/anteater2.jpg";
-                targetAniInfo1.textContent = "";
-                targetAniInfo2.textContent = "";
-                targetAniInfo3.textContent = "";
-                targetAniInfo4.textContent = "";
-                targetAniInfo5.textContent = "";
+                targetAniInfo1.textContent = "They can live 15 years in the wild, and up to 25 years in zoos.";
+                targetAniInfo2.textContent = "They weigh 39 to 85 lbs.";
+                targetAniInfo3.textContent = "Their tongues start at the breastbone and can extend up to 2 feet long.";
+                targetAniInfo4.textContent = "They swallow their food whole, and have no teeth.";
+                targetAniInfo5.textContent = "All species have claws so long and sharp that they have to walk on their knuckles or wrists to avoid stabbing themselves.";
                 break;
 
         }
@@ -498,6 +502,12 @@ function secondaryInfo() {
     
     
 }
+
+var sfx = document.getElementById("winsfx"); 
+
+function playAudio() { 
+    sfx.play(); 
+} 
 
 //-----------------
 
@@ -511,7 +521,7 @@ zooAnimals = ["Monkey","Giant Panda","Elephant","Giraffe","Sloth","Lion","Pengui
               "Snow Leopard","Sea Lion","Jaguar","Gibbon","River Otter",
               "Chimpanzee","Komodo Dragon","Anteater"];
 
-// zooAnimals = ["Monkey", "Giant Panda", "Elephant"] //To debug issue where space does not show in wordGuessArea.
+// zooAnimals = ["Capybara"] //To debug issues relating to the zooAnimals Array.
 
 alphaAllCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
                 "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -528,6 +538,7 @@ var numOfGuess = 10;
 var zooAnimalsIndex = getRandomInt(zooAnimals.length) // Initializes a random number between 0 and the max length of the zooAnimals array.
 var currentWord = zooAnimals[zooAnimalsIndex]; // Locates the currentWord within the zooAnimals array and initializes it in currentWord.
 var wordSplit = currentWord.split(""); // Method that splits the string found in currentWord into an array of individual characters.
+var str2 = "";
 
 var censoredWord = []; // Array to store the converted censored word.
 var censoredWordCheckStatus = [];
@@ -568,6 +579,8 @@ var targetAniInfo5 = document.getElementById("aniInfo5");
 // console.log(arrLow);
 // console.log(arrUp);
 // console.log(alphaAllCase);
+console.log("The animal is a " + wordSplit.join(""));
+
 
 // Call-back functions to run at initialization.
 arrLower(wordSplit, arrLow);
@@ -598,7 +611,7 @@ document.onkeyup = function (event) {
         wordGuessRefresh(); 
 
     } else if (gameStatus == true) { // All main game code AFTER player presses any key to start.
-        
+       
         if (alphaAllCase.indexOf(userChoice) == -1) {
         targetInfoPanel.textContent = "You pressed an incorrect key!";
         } else {
