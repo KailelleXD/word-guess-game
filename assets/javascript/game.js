@@ -206,6 +206,7 @@ function secondaryInfo(animalCaps) {
 
 
     if(winLoseStatus == true) {
+        console.log(animalCaps);
         switch(animalCaps.join("")) {
             case "MONKEY":
                 document.getElementById("aniPic1").src="assets/images/monkey1.jpg";
@@ -217,7 +218,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "Patas monkeys are the fastest primates on land, and can run up to 31 miles per hour.";
                 break;
 
-            case "GIANT - PANDA":
+            case "GIANT PANDA":
                 document.getElementById("aniPic1").src="assets/images/giantpanda1.jpg";
                 document.getElementById("aniPic2").src="assets/images/giantpanda2.jpg";
                 targetAniInfo1.textContent = "Live in the mountains of southwestern China, in damp, misty forests.";
@@ -297,7 +298,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "A group of hippos is sometimes called a bloat, pod, or siege.";
                 break;
 
-            case "RED - PANDA":
+            case "RED PANDA":
                 document.getElementById("aniPic1").src="assets/images/redpanda1.jpg";
                 document.getElementById("aniPic2").src="assets/images/redpanda2.jpg";
                 targetAniInfo1.textContent = "They can live 8 to 10 years in the wild, and up to 15 in zoos.";
@@ -317,7 +318,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "To conserve energy, koalas sleep 18 to 22 hours a day.";
                 break;
 
-            case "POLAR - BEAR":
+            case "POLAR BEAR":
                 document.getElementById("aniPic1").src="assets/images/polarbear1.jpg";
                 document.getElementById("aniPic2").src="assets/images/polarbear2.png";
                 targetAniInfo1.textContent = "Females live an average 24.2 years, males only live an average of 20.7 years.";
@@ -417,7 +418,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "Pied tamarins are the most endangered Amazonian primates.";
                 break;
 
-            case "SNOW - LEOPARD":
+            case "SNOW LEOPARD":
                 document.getElementById("aniPic1").src="assets/images/snowleopard1.jpg";
                 document.getElementById("aniPic2").src="assets/images/snowleopard2.jpg";
                 targetAniInfo1.textContent = "They live up to 22 years in zoos.";
@@ -427,7 +428,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "It’s long, thick, and luxurious tail acts as a built-in comforter when the cat wraps it around its body for added warmth.";
                 break;
 
-            case "SEA - LION":
+            case "SEA LION":
                 document.getElementById("aniPic1").src="assets/images/sealion1.jpg";
                 document.getElementById("aniPic2").src="assets/images/sealion2.jpg";
                 targetAniInfo1.textContent = "They live 20 to 30 years.";
@@ -457,7 +458,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "They are highly intelligent, and can even recognize themselves in a mirror!";
                 break;
 
-            case "RIVER - OTTER":
+            case "RIVER OTTER":
                 document.getElementById("aniPic1").src="assets/images/riverotter1.jpg";
                 document.getElementById("aniPic2").src="assets/images/riverotter2.jpg";
                 targetAniInfo1.textContent = "They have a median life expectancy of 11.7 years.";
@@ -477,7 +478,7 @@ function secondaryInfo(animalCaps) {
                 targetAniInfo5.textContent = "When they are happy, they make a grunting sound. A toothy 'grin' actually indicates fear or anxiety.";
                 break;
 
-            case "KOMODO - DRAGON":
+            case "KOMODO DRAGON":
                 document.getElementById("aniPic1").src="assets/images/komododragon1.jpg";
                 document.getElementById("aniPic2").src="assets/images/komododragon2.jpg";
                 targetAniInfo1.textContent = "They live about 30 years.";
