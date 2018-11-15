@@ -17,5 +17,3 @@ This project was one of my homework assignments for the UCLAx coding bootcamp. B
 * CSS
 * JavaScript
 
-
-
